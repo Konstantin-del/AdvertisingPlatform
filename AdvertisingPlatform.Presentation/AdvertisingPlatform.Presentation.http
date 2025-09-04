@@ -1,0 +1,6 @@
+@AdvertisingPlatform.Presentation_HostAddress = http://localhost:5127
+
+GET {{AdvertisingPlatform.Presentation_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

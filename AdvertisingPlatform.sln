@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36414.22 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdvertisingPlatform.Presentation", "AdvertisingPlatform.Presentation\AdvertisingPlatform.Presentation.csproj", "{BFEA1496-84FF-43CB-95B1-2392B8305914}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdvertisingPlatform.Application", "AdvertisingPlatform.Application\AdvertisingPlatform.Application.csproj", "{D41D6646-2271-4BBC-A548-E00B358329B4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BFEA1496-84FF-43CB-95B1-2392B8305914}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFEA1496-84FF-43CB-95B1-2392B8305914}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFEA1496-84FF-43CB-95B1-2392B8305914}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFEA1496-84FF-43CB-95B1-2392B8305914}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D41D6646-2271-4BBC-A548-E00B358329B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D41D6646-2271-4BBC-A548-E00B358329B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D41D6646-2271-4BBC-A548-E00B358329B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D41D6646-2271-4BBC-A548-E00B358329B4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {967A37E1-E112-41F1-A5FA-D4BCAAE37E77}
+	EndGlobalSection
+EndGlobal
