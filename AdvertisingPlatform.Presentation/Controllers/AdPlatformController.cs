@@ -7,15 +7,6 @@ namespace AdvertisingPlatform.Presentation.Controllers
     [Route("api/[controller]")]
     public class AdPlatformController(ILocationAdService locationAdService, ILogger<AdPlatformController> logger) : ControllerBase
     {
-        //private readonly ILocationAdService locationAdService;
-        //private readonly ILogger<AdPlatformController> logger;
-
-        //public AdPlatformController(ILocationAdService locationAdService, ILogger<AdPlatformController> logger)
-        //{
-        //    locationAdService = locationAdService;
-        //    logger = logger;
-        //}
-
         [HttpPost("upload")]
         public async Task<IActionResult> UploadAdPlatforms(IFormFile file)
         {

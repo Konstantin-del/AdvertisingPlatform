@@ -5,11 +5,11 @@ namespace AdvertisingPlatform.Application
 {
     public class LocationAdService : ILocationAdService
     {
-        private ConcurrentDictionary<string, HashSet<string>> _locationToPlatforms = new();
+        private ConcurrentDictionary<string, HashSet<string>> locationToPlatforms = new();
 
         public async Task LoadAdPlatformsFromFileAsync(IFormFile file)
         {
-            _locationToPlatforms.Clear();
+            locationToPlatforms.Clear();
 
             using var reader = new StreamReader(file.OpenReadStream());
             string? line;
@@ -44,8 +44,26 @@ namespace AdvertisingPlatform.Application
                 {
                     continue;
                 }
+                if (locationToPlatforms.Count > 1) HandleNesting();
             }
-            foreach (var item in _locationToPlatforms)
+             
+        }
+
+        private void AddPlatformToLocationHierarchy(string platformName, string location)
+        {
+            locationToPlatforms.AddOrUpdate(
+                location,
+                new HashSet<string> { platformName },
+                (key, existing) =>
+                {
+                    existing.Add(platformName);
+                    return existing;
+                });
+        }
+
+        private void HandleNesting()
+        {
+            foreach (var item in locationToPlatforms)
             {
                 var currentLocation = item.Key;
                 while (currentLocation.Contains('/'))
@@ -56,56 +74,25 @@ namespace AdvertisingPlatform.Application
 
                     currentLocation = currentLocation.Substring(0, lastSlashIndex);
 
-                    if (_locationToPlatforms.TryGetValue(currentLocation, out var parentPlatforms))
+                    if (locationToPlatforms.TryGetValue(currentLocation, out var parentPlatforms))
                     {
                         foreach (var platform in parentPlatforms)
                         {
-                            _locationToPlatforms[item.Key].Add(platform);
+                            locationToPlatforms[item.Key].Add(platform);
                         }
                     }
                 }
-            } 
-        }
-
-        private void AddPlatformToLocationHierarchy(string platformName, string location)
-        {
-            _locationToPlatforms.AddOrUpdate(
-                location,
-                new HashSet<string> { platformName },
-                (key, existing) =>
-                {
-                    existing.Add(platformName);
-                    return existing;
-                });
+            }
         }
 
         public List<string> GetAdPlatformsForLocation(string location)
         {
-            if (string.IsNullOrWhiteSpace(location))
-                return new List<string>();
-
-            var result = new HashSet<string>();
-
-            if (_locationToPlatforms.TryGetValue(location, out var exactPlatforms))
+            if (locationToPlatforms.TryGetValue(location, out var exactPlatforms))
             {
-                foreach (var platform in exactPlatforms)
-                {
-                    result.Add(platform);
-                }
+                return exactPlatforms.OrderBy(p => p).ToList(); 
             }
-
-            return result.OrderBy(p => p).ToList();
+            else return new List<string>();
         } 
     }
 }
-
-//foreach (var items in _locationToPlatforms)
-//{
-//    Console.WriteLine($"{items.Key}");
-//    foreach (var s in items.Value)
-//    {
-//        Console.Write($" {s}");
-//    }
-//    Console.WriteLine(" ");
-//}
 
