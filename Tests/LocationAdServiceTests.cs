@@ -17,12 +17,12 @@ public class LocationAdServiceTests
     public async Task LoadAdPlatformsFromFileAsync_ValidFile_LoadsPlatformsCorrectly()
     {
         // Arrange
-        var content = "Яндекс.Директ:/ru\nРевдинский рабочий:/ru/svrd/revda,/ru/svrd/pervik\nГазета уральских москвичей:/ru/msk,/ru/permobl,/ru/chelobl\nКрутая реклама:/ru/svrd";
+        var content = "пїЅпїЅпїЅпїЅпїЅпїЅ.пїЅпїЅпїЅпїЅпїЅпїЅ:/ru\nпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ:/ru/svrd/revda,/ru/svrd/pervik\nпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ:/ru/msk,/ru/permobl,/ru/chelobl\nпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ:/ru/svrd";
         var file = CreateMockFile(content, "test.txt");
-        var locations1 = new List<string> { "Яндекс.Директ" };
-        var locations2 = new List<string> { "Яндекс.Директ", "Ревдинский рабочий", "Крутая реклама"};
-        var locations3 = new List<string> { "Яндекс.Директ", "Газета уральских москвичей" };
-        var locations4 = new List<string> { "Яндекс.Директ", "Газета уральских москвичей" };
+        var locations1 = new List<string> { "пїЅпїЅпїЅпїЅпїЅпїЅ.пїЅпїЅпїЅпїЅпїЅпїЅ" };
+        var locations2 = new List<string> { "пїЅпїЅпїЅпїЅпїЅпїЅ.пїЅпїЅпїЅпїЅпїЅпїЅ", "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ", "пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ"};
+        var locations3 = new List<string> { "пїЅпїЅпїЅпїЅпїЅпїЅ.пїЅпїЅпїЅпїЅпїЅпїЅ", "пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ" };
+        var locations4 = new List<string> { "пїЅпїЅпїЅпїЅпїЅпїЅ.пїЅпїЅпїЅпїЅпїЅпїЅ", "пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ" };
 
         // Act
         await _service.LoadAdPlatformsFromFileAsync(file);
@@ -74,7 +74,7 @@ public class LocationAdServiceTests
     public async Task GetAdPlatformsForLocation_NonExistentLocation_ReturnsEmptyList()
     {
         // Arange
-        var file = CreateMockFile("Яндекс.Директ:/ru", "empty.txt");
+        var file = CreateMockFile("пїЅпїЅпїЅпїЅпїЅпїЅ.пїЅпїЅпїЅпїЅпїЅпїЅ:/ru", "empty.txt");
         await _service.LoadAdPlatformsFromFileAsync(file);
 
         // Act
@@ -88,7 +88,7 @@ public class LocationAdServiceTests
     public async Task GetAdPlatformsForLocation_EmptyLocation_ReturnsEmptyList()
     {
         // Arange
-        var file = CreateMockFile("Яндекс.Директ:/ru", "empty.txt");
+        var file = CreateMockFile("пїЅпїЅпїЅпїЅпїЅпїЅ.пїЅпїЅпїЅпїЅпїЅпїЅ:/ru", "empty.txt");
         await _service.LoadAdPlatformsFromFileAsync(file);
 
         // Act
@@ -110,3 +110,4 @@ public class LocationAdServiceTests
         };
     }
 }
+

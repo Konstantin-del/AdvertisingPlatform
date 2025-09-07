@@ -10,7 +10,6 @@ namespace AdvertisingPlatform.Presentation.Controllers
         [HttpPost("upload")]
         public async Task<IActionResult> UploadAdPlatforms(IFormFile file)
         {
-            Console.WriteLine("controlller");
             try
             {
                 if (file == null)

@@ -1,0 +1,43 @@
+# Игнорируем папки сборки и временные файлы
+**/bin/
+**/obj/
+**/out/
+
+# Игнорируем файлы IDE
+.vs/
+.vscode/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Игнорируем файлы Git
+.git/
+.gitignore
+.gitattributes
+
+# Игнорируем файлы тестирования
+Tests/
+**/*.Tests.csproj
+
+# Игнорируем файлы документации
+README.md
+*.md
+
+# Игнорируем файлы логов
+*.log
+
+# Игнорируем временные файлы
+*.tmp
+*.temp
+
+# Игнорируем файлы конфигурации разработки
+**/appsettings.Development.json
+**/launchSettings.json
+
+# Игнорируем файлы Docker
+Dockerfile*
+.dockerignore
+docker-compose*.yml
+
+
